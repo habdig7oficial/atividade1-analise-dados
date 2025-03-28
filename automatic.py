@@ -1,7 +1,7 @@
 from statistics import *
 from matplotlib.pyplot import *
 
-def print_relatorio(arr: list[float], name: str):
+def print_relatorio(arr: list[float], name: str, title: str):
 	print(f"""
 Arr: {arr}
 Max: {arr.index(max(arr))}
@@ -20,6 +20,8 @@ Coeficiente de Variação Amostral: {stdev(arr)/mean(arr)}
 3° quartil: {median(arr[int(len(arr) /2):len(arr)])}
 """)
 	fig, axs = subplots(2)
+	fig.suptitle(title)
+	axs[0].set_yscale("log" if len(arr) > 100 else "linear")
 	axs[0].hist(arr)
 	axs[1].boxplot(arr)
 	savefig(name)
@@ -29,7 +31,7 @@ Coeficiente de Variação Amostral: {stdev(arr)/mean(arr)}
 arr = [291, 10.9, 47, 86, 44, 18.9, 1, 50, 190.4, 45.7, 28.5, 18.9, 16, 34, 8.6, 9.6]
 
 arr.sort()
-print_relatorio(arr, "manual_dataset.png")
+print_relatorio(arr, "manual_dataset.png", "Dataset EMPÍRICO (obrigado borba)")
 
 
 print("===================")
@@ -45,4 +47,4 @@ with open("./Video_Games_Sales_as_at_22_Dec_2016.csv") as csvfile:
 	for i in data:
 		data_arr.append(float(i["EU_Sales"]))
 
-print_relatorio(data_arr, "real_dataset.png")
+print_relatorio(data_arr, "real_dataset.png", "Vendas de jogos em 22 de dezembro de 2016")
