@@ -8,9 +8,9 @@ from scipy.stats import pearsonr
 # Dados fornecidos
 data = {
     'x': np.arange(1, 16),
-    'y': [200, 250, 300, 150, 180, 220, 270, 210, 230, 190, 280, 240],
+    'y': [11, 12, 24, 30, 31, 33, 61, 62, 70, 81, 84, 84, 92, 96, 97],
 }
-
+#print(data['x'])
 # Criando DataFrame
 df = pd.DataFrame(data)
 
@@ -19,8 +19,8 @@ corr, _ = pearsonr(df['x'], df['y'])
 print(f"Coeficiente de correlação: {corr}")
 
 # Parte 2: Regressão Linear Simples
-X = df['Gasto_Marketing'].values.reshape(-1, 1)
-y = df['Vendas'].values
+X = df['x'].values.reshape(-1, 1)
+y = df['y'].values
 
 # Ajustando o modelo
 model = LinearRegression()
@@ -32,15 +32,15 @@ b = model.coef_[0]
 print(f"Equação de regressão: y = {a:.2f} + {b:.2f}x")
 
 # Previsão para Gasto de Marketing de 260
-gasto_novo = np.array([[260]])
-vendas_previstas = model.predict(gasto_novo)
-print(f"Previsão de vendas para gasto de R$ 260 mil: {vendas_previstas[0]:.2f} mil")
+#gasto_novo = np.array([[260]])
+#vendas_previstas = model.predict(gasto_novo)
+#print(f"Previsão de vendas para gasto de R$ 260 mil: {vendas_previstas[0]:.2f} mil")
 
 # Parte 3: Visualização
-plt.scatter(df['Gasto_Marketing'], df['Vendas'], color='blue', label='Dados')
-plt.plot(df['Gasto_Marketing'], model.predict(X), color='red', label='Linha de Regressão')
-plt.xlabel('Gasto em Marketing (R$ mil)')
-plt.ylabel('Vendas (mil)')
-plt.title('Gasto em Marketing vs Vendas')
-plt.legend()
-plt.show()
+fig, axs = plt.subplots(2)
+axs[0].hist(X)
+axs[1].scatter(df['x'], df['y'], color='blue', label='Dados')
+axs[1].plot(df['x'], model.predict(X), color='red', label='Linha de Regressão')
+fig.suptitle('Correlação:')
+axs[1].legend()
+plt.savefig("hello.png")

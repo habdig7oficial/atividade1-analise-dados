@@ -45,3 +45,16 @@ def variancia(arr: list[float], is_amostral: bool = True) -> float:
 		return soma_arr(s_arr) / (len(arr) - 1)
 	else:
 		return soma_arr(s_arr) / len(arr)
+
+
+def mul_arrs(arr1: list[float], arr2: list[float]) -> float:
+	acc = 0
+	for x, y in zip(arr1, arr2):
+		acc += x * y
+	return acc
+
+def exp_arr(arr: list[float], exp: int) -> float:
+	new_arr = [None] * len(arr)
+	for i in range(0, len(arr)):
+		new_arr[i] = arr[i] ** exp
+	return new_arr
