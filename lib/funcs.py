@@ -28,7 +28,7 @@ def mediana(arr: list[float]) -> float:
 		m = int(len(arr) / 2)
 		return (arr[m] + arr[m-1]) / 2
 	else:
-		return arr[ceil(len(arr) / 2)]
+		return arr[int(len(arr) / 2)]
 
 def soma_arr(arr: list[float]) -> float:
 	acc = 0

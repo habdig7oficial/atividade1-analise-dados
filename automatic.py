@@ -3,8 +3,8 @@ from matplotlib.pyplot import *
 
 def print_relatorio(arr: list[float], name: str, title: str):
 	print(f"""
-Arr: {arr}
-Max: {arr.index(max(arr))}
+Arr: {arr if len(arr) < 40 else 'grande pra caramba'}
+Max Index: {arr.index(max(arr))}
 Média: {mean(arr)}
 Mediana: {median(arr)}
 
@@ -28,8 +28,7 @@ Coeficiente de Variação Amostral: {stdev(arr)/mean(arr)}
 
 
 ## Dataset
-arr = [291, 10.9, 47, 86, 44, 18.9, 1, 50, 190.4, 45.7, 28.5, 18.9, 16, 34, 8.6, 9.6]
-
+arr = [11, 12, 24, 30, 31, 33, 61, 62, 70, 81, 84, 84, 92, 96, 97]
 arr.sort()
 print_relatorio(arr, "manual_dataset.png", "Dataset EMPÍRICO (obrigado borba)")
 

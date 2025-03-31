@@ -1,4 +1,4 @@
-# sudo docker build -t ex_analise_dados .  && sudo docker run -it --volumne ./:/mnt ex_analise_dados 
+# sudo docker build -t ex_analise_dados .  && sudo docker run -it --volume ./:/mnt ex_analise_dados 
 
 FROM python:latest
 
